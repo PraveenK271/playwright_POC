@@ -1,8 +1,8 @@
 import {Page, Locator} from '@playwright/test'
 
 export class SigninPage {
-    private readonly page:Page
-    private readonly loginHeader:Locator;
+    readonly page:Page
+    readonly loginHeader:Locator;
     private readonly signinWithGoogle:Locator;
     private readonly emailAddressInput:Locator;
     private readonly passwordInput:Locator;

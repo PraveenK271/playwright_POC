@@ -72,6 +72,13 @@ export default defineConfig({
         viewport:{width:1920,height:1080},},
       dependencies:['setup'],
     },
+    {
+      name: 'register',
+      testDir:'./tests/customer',
+      use:{
+        ...devices['Desktop Chrome'],
+        viewport:{width:1920,height:1080}},
+      }
 
     // {
     //   name: 'firefox',
