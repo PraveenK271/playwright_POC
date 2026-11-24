@@ -12,9 +12,9 @@ export class SigninPage {
     constructor(page:Page){
         this.page = page;
         this.loginHeader = page.getByRole('heading', {name:'Login'});
-        this.signinWithGoogle = page.getByRole('button', {name: ' Sign in with Googel'});
+        this.signinWithGoogle = page.getByRole('button', {name: ' Sign in with Google'});
         this.emailAddressInput = page.getByPlaceholder('Your email');
-        this.passwordInput = page.getByPlaceholder('Your Passsword');
+        this.passwordInput = page.getByPlaceholder('Your Password');
         this.loginButton = page.getByLabel('Login');
         this.registerAccount = page.getByRole('link', {name: 'Register your account'});
     }

@@ -11,15 +11,15 @@ const street = 'Street 1';
 const city = 'Chennai';
 const state = 'TN';
 const phone = '1234567890';
-const email = `test${Date.now().toString}@test.com`;
+const email = `test${Date.now().toString()}@test.com`;
 const password = 'password' 
 
 test('register user and signin', async({signInPage,homePage,registerAccount,page})=>{
-    page.goto('/');
-    homePage.navigaeToSignin();
-    signInPage.navigateToRegisterAccountPage();
-    registerAccount.fillRegistrationForm(firstName,lastName, dob,country,postalCode, houseNumber,street,city,state,phone,email,password);
-    registerAccount.registerUser();
+    await page.goto('/');
+    await homePage.navigaeToSignin();
+    await signInPage.navigateToRegisterAccountPage();
+    await registerAccount.fillRegistrationForm(firstName,lastName, dob,country,postalCode, houseNumber,street,city,state,phone,email,password);
+    await registerAccount.registerUser();
     await expect(signInPage.loginHeader).toBeVisible();
-    signInPage.signin(email,password);
+    await signInPage.signin(email,password);
 })

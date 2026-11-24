@@ -34,7 +34,7 @@ export class HomePage{
     }
 
     async verifySearchResults(productName:string){
-        await expect(this.searchResults).toBeVisible();
+        await expect(this.searchResults.nth(1)).toBeVisible();
         const searchResultsCount = await this.searchResults.count();
         const searchResultsCountMessageText = await this.searchResultsCountMessage.textContent();
         const searchResultsCountNumber = 
@@ -50,7 +50,7 @@ export class HomePage{
 
     async addProductToCart(productName:string){
         await this.searchResults.locator(`img[alt="${productName}"]`).click();
-        await expect(this.page).toHaveTitle('Thor Hammer - Practice Software Testing - Toolshop - v5.0');
+        await expect(this.page).toHaveTitle(`${productName} - Practice Software Testing - Toolshop - v5.0`);
         await this.addToCartButton.click();         
     }
 

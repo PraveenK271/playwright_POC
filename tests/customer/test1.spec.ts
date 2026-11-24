@@ -1,13 +1,14 @@
 import {test} from '../fixtures';
-import { CheckoutPage } from '../pages/CheckoutPage';
 
 test('verify search results count and product name in the search results',async({homePage,page})=>{
+    await page.goto('/');
     await homePage.navigateToHome();
     await homePage.searchProduct('Hammer');
     await homePage.verifySearchResults('Hammer');
 });
 
 test('verify product added to cart',async({homePage,page})=>{
+    await page.goto('/');
     await homePage.navigateToHome();
     await homePage.searchProduct('Hammer');
     await homePage.addProductToCart('Thor Hammer');
@@ -15,6 +16,7 @@ test('verify product added to cart',async({homePage,page})=>{
 });
 
 test('verify product details selected from search', async({productPage,homePage,page})=>{
+    await page.goto('/');
     await homePage.navigateToHome();
     await homePage.searchProduct('Hammer');
     await homePage.selectProductToView(' Thor Hammer ');
@@ -22,6 +24,7 @@ test('verify product details selected from search', async({productPage,homePage,
 });
 
 test('complete checkout flow', async({homePage,productPage,checkoutPage,page})=>{
+    await page.goto('/');
     await homePage.navigateToHome();
     await homePage.searchProduct('Hammer');
     await homePage.selectProductToView(' Thor Hammer ');

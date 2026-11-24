@@ -39,20 +39,20 @@ export class CheckoutPage{
         this.continueAsGuestButton = page.locator('//input[@value="Continue as Guest"]');
         this.billingAddressCountryDropdown =  page.locator('//select[@id="country"]');
         this.billingAddressPostCodeInputField = page.getByPlaceholder('Your Postcode *');
-        this.billingAddressHouseNoInputField = page.getByPlaceholder('');
-        this.billingAddressStreetInputField = page.getByPlaceholder ('');
-        this.billingAddressCityInputField = page.getByPlaceholder('');
-        this.billingAddressStateInputField = page.getByPlaceholder('');
+        this.billingAddressHouseNoInputField = page.getByPlaceholder('e.g 42 *');
+        this.billingAddressStreetInputField = page.getByPlaceholder ('Your Street *');
+        this.billingAddressCityInputField = page.getByPlaceholder('Your City *');
+        this.billingAddressStateInputField = page.getByPlaceholder('Your State *');
         this.choosePaymentMethodDropdown= page.locator('//select[@id="payment-method"]');
         this.paymentSucccessfulMessage = page.locator('//div[text()="Payment was successful"]');
         this.confirmButton = page.locator('//button[text()=" Confirm "]');
-        this.userLoggedIn = page.locator('//p[tex()="Hello Jane Doe, you are already logged in. You can proceed to checkout."]');
-        this.checkPaymentButton = page.locator('//button[tex()=" Check payment "]');
+        this.userLoggedIn = page.locator('//p[text()="Hello Jane Doe, you are already logged in. You can proceed to checkout."]');
+        this.checkPaymentButton = page.locator('//button[text()=" Check payment "]');
         this.orderConfirmationMessage = page.locator('//div[@id="order-confirmation"]');
     }
 
     async verifyCartSection(){
-        expect(this.cartItemsTable.locator('//tr/td/').nth(2).textContent()).toContainEqual('1');
+        expect(await this.cartItemsTable.locator('//tr/td/').nth(2).textContent()).toContainEqual('1');
     }
 
     async proceedToCheckout(){
@@ -93,7 +93,7 @@ export class CheckoutPage{
     }
 
     async fetcInvoiceNumber(){
-        expect(this.orderConfirmationMessage).toBeVisible();
+        await expect(this.orderConfirmationMessage).toBeVisible();
         const invoiceNumber = await this.orderConfirmationMessage.locator('//span').textContent();
         return invoiceNumber;
     }
