@@ -34,11 +34,11 @@ export class HomePage{
     }
 
     async verifySearchResults(productName:string){
-        await expect(this.searchResults.nth(1)).toBeVisible();
+        await expect(this.searchResults.first()).toBeVisible();
         const searchResultsCount = await this.searchResults.count();
         const searchResultsCountMessageText = await this.searchResultsCountMessage.textContent();
         const searchResultsCountNumber = 
-        parseInt((searchResultsCountMessageText?searchResultsCountMessageText.trim():'').substring(0,1));
+        parseInt((searchResultsCountMessageText?searchResultsCountMessageText.trim():'').substring(0,2));
         expect(searchResultsCount).toBe(searchResultsCountNumber);
         for(let i=0;i<searchResultsCount;i++){
             await expect(this.searchResults.nth(i)).toContainText(productName);

@@ -12,7 +12,7 @@ const city = 'Chennai';
 const state = 'TN';
 const phone = '1234567890';
 const email = `test${Date.now().toString()}@test.com`;
-const password = 'password' 
+const password = 'Test@560345'; 
 
 test('register user and signin', async({signInPage,homePage,registerAccount,page})=>{
     await page.goto('/');
@@ -22,4 +22,5 @@ test('register user and signin', async({signInPage,homePage,registerAccount,page
     await registerAccount.registerUser();
     await expect(signInPage.loginHeader).toBeVisible();
     await signInPage.signin(email,password);
+    await expect(page).toHaveTitle('Overview - Practice Software Testing - Toolshop - v5.0');
 })

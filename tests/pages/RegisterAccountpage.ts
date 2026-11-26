@@ -26,7 +26,7 @@ export class RegisterAccount {
         this.dobInput = page.getByPlaceholder('YYYY-MM-DD');
         this.countryDropdown = page.locator('#country');
         this.postalCodeInput = page.getByPlaceholder('Your Postcode *');
-        this.houseNumberInput = page.getByPlaceholder('e.g 42 *');
+        this.houseNumberInput = page.getByPlaceholder('e.g. 42 *');
         this.streetInput = page.getByPlaceholder('Your Street *');
         this.cityInput = page.getByPlaceholder('Your City *');
         this.stateInput = page.getByPlaceholder('Your State *');

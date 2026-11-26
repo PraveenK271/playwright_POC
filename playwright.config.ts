@@ -53,7 +53,7 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    {name:'setup',testMatch:'.auth/setup.ts'},
+    {name:'setup',testMatch:'./tests/setup/'},
     {
       name: 'customer',
       testDir: './tests/customer',
@@ -77,7 +77,7 @@ export default defineConfig({
       testDir:'./tests/registerUser',
       use:{
         ...devices['Desktop Chrome'],
-        viewport:{width:1920,height:1080}},
+        viewport:{width:1080,height:1080}},
       }
 
     // {

@@ -22,9 +22,9 @@ export class ProductPage{
         this.productCategory = page.locator('//span[text()="Hammer"]');
         this.productBrand = page.locator('//span[text()="ForgeFlex Tools "]');
         this.currencySymbol = page.locator('//span[text()="$"]');
-        this.productPrice = page.locator('//span[@aria-lable="unit-price"]');
-        this.decreaseQuantityButton = page.locator('//button[@aria-lable="Decrease quantity"]');
-        this.increaseQuantityButton = page.locator('//button[@aria-lable="Increase quantity"]');
+        this.productPrice = page.locator('//span[@aria-label="unit-price"]');
+        this.decreaseQuantityButton = page.locator('//button[@aria-label="Decrease quantity"]');
+        this.increaseQuantityButton = page.locator('//button[@aria-label="Increase quantity"]');
         this.quanityInputField = page.locator('//input[@id="quantity-input"]');
         this.specificationsTable = page.locator('//h3[text()="Specifications"]/following-sibling::table');
         this.addToCartButton = page.locator('//button[@id="btn-add-to-cart"]');
@@ -40,8 +40,8 @@ export class ProductPage{
     }
 
     async verifyProductDetails(searchString:string,brand:string){
-        expect(this.productName.innerText()).toContain(searchString);
-        expect(this.productBrand.innerText()).toContain(brand);
+        expect(await this.productName.innerText()).toContainText(searchString);
+        expect(await this.productBrand.innerText()).toContainText(brand);
         await expect(this.productCategory).toBeVisible();
     }
 }

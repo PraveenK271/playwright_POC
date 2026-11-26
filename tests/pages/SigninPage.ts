@@ -15,7 +15,7 @@ export class SigninPage {
         this.signinWithGoogle = page.getByRole('button', {name: ' Sign in with Google'});
         this.emailAddressInput = page.getByPlaceholder('Your email');
         this.passwordInput = page.getByPlaceholder('Your Password');
-        this.loginButton = page.getByLabel('Login');
+        this.loginButton = page.getByLabel('Login' , {exact:true});
         this.registerAccount = page.getByRole('link', {name: 'Register your account'});
     }
 
