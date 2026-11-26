@@ -52,7 +52,7 @@ export class CheckoutPage{
     }
 
     async verifyCartSection(){
-        expect(await this.cartItemsTable.locator('//tr/td').nth(2).textContent()).toContainText('1');
+        expect(await this.cartItemsTable.locator('//tr/td').nth(2).textContent()).toContain('1');
     }
 
     async proceedToCheckout(){
@@ -60,7 +60,8 @@ export class CheckoutPage{
     }
 
     async continueAsGuestSection(){
-        if(await this.userLoggedIn.toBeVisible()){
+        const userLoggedInVisible = await expect(this.userLoggedIn).toBeVisible().then(()=>true).catch(()=>false);
+        if (userLoggedInVisible) { 
             await this.proceedToCheckoutButton.click();
         }else{
             await this.continueAsGuestTab.click();

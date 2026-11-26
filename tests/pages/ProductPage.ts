@@ -40,8 +40,8 @@ export class ProductPage{
     }
 
     async verifyProductDetails(searchString:string,brand:string){
-        expect(await this.productName.innerText()).toContainText(searchString);
-        expect(await this.productBrand.innerText()).toContainText(brand);
+        expect(await this.productName).toContainText(searchString);
+        expect(await this.productBrand).toContainText(brand);
         await expect(this.productCategory).toBeVisible();
     }
 }
