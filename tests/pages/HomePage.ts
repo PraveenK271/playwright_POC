@@ -62,7 +62,7 @@ export class HomePage{
         await this.checkoutButton.click();
     }
 
-    async navigaeToSignin(){
+    async navigateToSignin(){
         await this.signin.click();
     }
 }

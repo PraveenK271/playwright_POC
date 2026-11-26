@@ -1,15 +1,15 @@
-import {test} from '../fixtures';
+  import {test} from '../fixtures';
 
 test('verify search results count and product name in the search results',async({homePage,page})=>{
     await page.goto('/');
-    await homePage.navigateToHome();
+    //await homePage.navigateToHome();
     await homePage.searchProduct('Hammer');
     await homePage.verifySearchResults('Hammer');
 });
 
 test('verify product added to cart',async({homePage,page})=>{
     await page.goto('/');
-    await homePage.navigateToHome();
+    //await homePage.navigateToHome();
     await homePage.searchProduct('Hammer');
     await homePage.addProductToCart('Thor Hammer');
     await homePage.verifyCartCount('1');
@@ -17,7 +17,7 @@ test('verify product added to cart',async({homePage,page})=>{
 
 test('verify product details selected from search', async({productPage,homePage,page})=>{
     await page.goto('/');
-    await homePage.navigateToHome();
+    //await homePage.navigateToHome();
     await homePage.searchProduct('Hammer');
     await homePage.selectProductToView(' Thor Hammer ');
     await productPage.verifyProductDetails('Hammer','ForgeFlex Tools ');
@@ -25,7 +25,6 @@ test('verify product details selected from search', async({productPage,homePage,
 
 test('complete checkout flow', async({homePage,productPage,checkoutPage,page})=>{
     await page.goto('/');
-    await homePage.navigateToHome();
     await homePage.searchProduct('Hammer');
     await homePage.selectProductToView(' Thor Hammer ');
     await productPage.addProductToCart(1);
@@ -37,5 +36,5 @@ test('complete checkout flow', async({homePage,productPage,checkoutPage,page})=>
     await checkoutPage.inputAddressDetails();
     await checkoutPage.selectPaymentMethod();
     await checkoutPage.verifyPaymentandConfirm();
-    console.log(await checkoutPage.fetcInvoiceNumber());
+    const invoiceNumber = await checkoutPage.fetchInvoiceNumber();
 })

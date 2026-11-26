@@ -19,7 +19,7 @@ export class CheckoutPage{
     private readonly billingAddressCityInputField:Locator;
     private readonly billingAddressStateInputField:Locator;
     private readonly choosePaymentMethodDropdown:Locator;
-    private readonly paymentSucccessfulMessage:Locator;
+    private readonly paymentSuccessfulMessage:Locator;
     private readonly confirmButton:Locator;
     private readonly userLoggedIn:Locator;
     private readonly checkPaymentButton:Locator;
@@ -44,7 +44,7 @@ export class CheckoutPage{
         this.billingAddressCityInputField = page.getByPlaceholder('Your City *');
         this.billingAddressStateInputField = page.getByPlaceholder('Your State *');
         this.choosePaymentMethodDropdown= page.locator('//select[@id="payment-method"]');
-        this.paymentSucccessfulMessage = page.locator('//div[text()="Payment was successful"]');
+        this.paymentSuccessfulMessage = page.locator('//div[text()="Payment was successful"]');
         this.confirmButton = page.locator('//button[text()=" Confirm "]');
         this.userLoggedIn = page.locator('//p[text()="Hello Jane Doe, you are already logged in. You can proceed to checkout."]');
         this.checkPaymentButton = page.locator('//button[text()=" Check payment "]');
@@ -52,7 +52,7 @@ export class CheckoutPage{
     }
 
     async verifyCartSection(){
-        expect(await this.cartItemsTable.locator('//tr/td').nth(2).textContent()).toContain('1');
+        await expect(this.cartItemsTable.locator('//tr/td').nth(2)).toContainText('1');
     }
 
     async proceedToCheckout(){
@@ -89,11 +89,11 @@ export class CheckoutPage{
     }
 
     async verifyPaymentandConfirm(){
-        await expect(this.paymentSucccessfulMessage).toBeVisible();
+        await expect(this.paymentSuccessfulMessage).toBeVisible();
         await this.confirmButton.click();
     }
 
-    async fetcInvoiceNumber(){
+    async fetchInvoiceNumber():Promise<string | null>{
         await expect(this.orderConfirmationMessage).toBeVisible();
         const invoiceNumber = await this.orderConfirmationMessage.locator('//span').textContent();
         return invoiceNumber;

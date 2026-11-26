@@ -1,5 +1,5 @@
 import {test as setup,expect} from '@playwright/test';
-import  baseEnvUrl from '../utils/environmentBaseUrl';
+import  baseEnvUrl from '../../utils/environmentBaseUrl';
 
 
 setup('Admin Login', async ({page})=>{

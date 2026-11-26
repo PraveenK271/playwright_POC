@@ -16,6 +16,7 @@ type MyFixtures = {
 export const test = base.extend<MyFixtures>({
     homePage: async({page},use)=>{
         const homePage = new HomePage(page);
+        //await homePage.navigateToHome();
         await use(homePage);
     },
 

@@ -24,7 +24,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI?4:undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html',{open:'on-failure'}]],
+  reporter: [['html',{open:'never'}]],
   // reporter: 'dot',
   // reporter: [['json',{outputFile:'test-results.json'}]],
   // reporter: 'list',
@@ -53,7 +53,7 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    {name:'setup',testMatch:'./tests/setup/'},
+    {name:'setup',testMatch:'/.*\.setup\.ts'},
     {
       name: 'customer',
       testDir: './tests/customer',

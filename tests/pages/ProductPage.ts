@@ -10,7 +10,7 @@ export class ProductPage{
     private readonly productPrice:Locator;
     private readonly decreaseQuantityButton:Locator;
     private readonly increaseQuantityButton:Locator;
-    private readonly quanityInputField:Locator;
+    private readonly quantityInputField:Locator;
     private readonly addToCartButton:Locator;
     private readonly addToFavoritesButton:Locator;
     private readonly compareButton:Locator;
@@ -25,7 +25,7 @@ export class ProductPage{
         this.productPrice = page.locator('//span[@aria-label="unit-price"]');
         this.decreaseQuantityButton = page.locator('//button[@aria-label="Decrease quantity"]');
         this.increaseQuantityButton = page.locator('//button[@aria-label="Increase quantity"]');
-        this.quanityInputField = page.locator('//input[@id="quantity-input"]');
+        this.quantityInputField = page.locator('//input[@id="quantity-input"]');
         this.specificationsTable = page.locator('//h3[text()="Specifications"]/following-sibling::table');
         this.addToCartButton = page.locator('//button[@id="btn-add-to-cart"]');
         this.addToFavoritesButton = page.locator('//button[@id="btn-add-to-favorites"]');
@@ -40,8 +40,8 @@ export class ProductPage{
     }
 
     async verifyProductDetails(searchString:string,brand:string){
-        expect(await this.productName).toContainText(searchString);
-        expect(await this.productBrand).toContainText(brand);
+        await expect(this.productName).toContainText(searchString);
+        await expect(this.productBrand).toContainText(brand);
         await expect(this.productCategory).toBeVisible();
     }
 }
